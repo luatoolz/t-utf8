@@ -32,7 +32,7 @@ function lib.split(self, ...)
     sep=table.concat(sep, '')
     lib.gsub(self, '([^%s]+)' % lib.escape(sep), saver(rv))
   elseif type(sep)=='string' then
-    lib.gsub(sep=='' and self or (self .. (sep or ' ')), sep=='' and '(.)' or string.format('(.-)(%s)', lib.escape(sep) or '%s+'), saver(rv))
+    lib.gsub(sep=='' and self or (self .. (sep or ' ')), sep=='' and '(.)' or string.format('(.-)(%s)', (sep~='' and sep~=' ') and lib.escape(sep) or "[%s\n]+"), saver(rv))
   end
   return rv end
 
