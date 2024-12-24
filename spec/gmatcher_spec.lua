@@ -1,8 +1,7 @@
 describe("gmatcher", function()
-	local t, is, u, gmatcher
+	local t, u, gmatcher
 	setup(function()
     t = require "t"
-    is = t.is
     u = t.utf8
     gmatcher = u.gmatcher("()(.)%2")
 	end)
