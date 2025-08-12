@@ -63,6 +63,7 @@ function lib.gmatcher(...)
 
 function lib.smatcher(...)
   local self, compare = ...
+  if type(compare)~='boolean' then compare=nil end
   return (not compare) and function(it)
     if type(it)=='nil' then return end
     if type(it)=='number' then it=tostring(it):null() end
@@ -74,6 +75,7 @@ function lib.smatcher(...)
 
 function lib.matcher(...)
   local self, compare = ...
+  if type(compare)~='boolean' then compare=nil end
   if (not compare) and type(self)=='function' then return self end
   if type(self)=='string' then return lib.smatcher(self, compare) end
   if type(self)=='table' or type(self)=='function' then
